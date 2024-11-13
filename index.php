@@ -2,7 +2,7 @@
 
 require_once('./connection.php');
 
-$stmt = $pdo->query('SELECT id, title FROM books');
+$stmt = $pdo->query('SELECT id, title FROM books WHERE is_deleted = 0;');
 
 ?>
 
@@ -16,10 +16,10 @@ $stmt = $pdo->query('SELECT id, title FROM books');
 <body>
 
 <ul>
-    <?php while ( $row = $stmt->fetch() ) { ?>
+    <?php while ( $book = $stmt->fetch() ) { ?>
         <li>
-            <a href="./book.php?id=<?= $row['id']; ?>">
-                <?= $row['title']; ?>
+            <a href="./book.php?id=<?= $book['id']; ?>">
+                <?= $book['title']; ?>
             </a>
         </li>
     <?php } ?>

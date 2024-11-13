@@ -21,5 +21,14 @@ $book = $stmt->fetch();
         <h1>
             <?= $book['title']; ?>
         </h1>
+
+        <a href="./edit.php?id=<?= $book['id']; ?>">
+            edit
+        </a>
+        <br><br>
+        <form action="./delete.php" method="post">
+            <input type="hidden" name="id" value="<?= $book['id']; ?>">
+            <input type="submit" name="delete_book" value="Kustuta">
+        </form>
 </body>
 </html>
